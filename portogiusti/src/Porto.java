@@ -14,9 +14,9 @@ public class Porto {
     // Metodo per assegnare una barca al primo posto libero
     public void assegnaPosto(Barca b) throws Exception {
         // Cerca il primo posto libero
-        for (PostoBarca p : posti) {
-            if (!p.occupato()) {
-                p.assegna(b);
+        for (int i = 0; i < posti.length; i++) {
+            if (!posti[i].occupato()) {
+                posti[i].assegna(b);
                 return;
             }
         }
@@ -31,7 +31,7 @@ public class Porto {
         if (!p.occupato()) {
             throw new Exception("Posto già libero");
         }
-        // Libera il posto e calcola il costo
+        // Libera il posto calcola il costo
         Barca b = p.libera();
         return b.calcolaCosto(giorni);
     }
@@ -60,5 +60,19 @@ public class Porto {
         }
         // Ridimensiona l'array per restituire solo i nomi trovati
         return nomi;
+    }
+
+    public String toString() {
+
+        String s = "Stato del Porto:\n";
+        for(int i = 0; i < posti.length; i++) {
+            s += "Posto " + (i + 1) + ": ";
+            if (posti[i].occupato()) {
+                s += posti[i].getBarca().getNome() + " (" + posti[i].getBarca().getNazionalita() + ")\n";
+            } else {
+                s += "Libero\n";
+            }
+        }
+        return s;           
     }
 }
