@@ -1,0 +1,6 @@
+rosso,triangolo,12
+verde,quadrato,32
+blu,cerchio,121
+marrone,rombo,10
+nero,trapezio,14
+azzurro,rettangolo,18
